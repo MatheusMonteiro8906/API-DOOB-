@@ -59,7 +59,6 @@ public class Filme {
         this.emprestado = emprestado;
     }
 
-    // toString
     @Override
     public String toString() {
         return "Filme{" +
@@ -72,10 +71,10 @@ public class Filme {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Filme Filme = (Filme) o;
+    public boolean equals(Object objeto) {
+        if (this == objeto) return true;
+        if (objeto == null || getClass() != objeto.getClass()) return false;
+        Filme Filme = (Filme) objeto;
         return Double.compare(Filme.rating, rating) == 0 &&
                 emprestado == Filme.emprestado &&
                 Objects.equals(id, Filme.id) &&

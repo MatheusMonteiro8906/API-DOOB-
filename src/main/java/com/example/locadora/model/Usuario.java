@@ -39,7 +39,6 @@ public class Usuario {
         this.possuiEmprestimo = possuiEmprestimo;
     }
 
-    // toString
     @Override
     public String toString() {
         return "Usuario{" +
@@ -50,10 +49,10 @@ public class Usuario {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
+    public boolean equals(Object objeto) {
+        if (this == objeto) return true;
+        if (objeto == null || getClass() != objeto.getClass()) return false;
+        Usuario usuario = (Usuario) objeto;
         return possuiEmprestimo == usuario.possuiEmprestimo &&
                 Objects.equals(id, usuario.id) &&
                 Objects.equals(nome, usuario.nome);

@@ -70,7 +70,6 @@ public class Emprestimo {
         this.dataDevolucaoReal = dataDevolucaoReal;
     }
 
-    // toString
     @Override
     public String toString() {
         return "Emprestimo{" +
@@ -83,12 +82,11 @@ public class Emprestimo {
                 '}';
     }
 
-    // equals and hashCode
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Emprestimo that = (Emprestimo) o;
+    public boolean equals(Object objeto) {
+        if (this == objeto) return true;
+        if (objeto == null || getClass() != objeto.getClass()) return false;
+        Emprestimo that = (Emprestimo) objeto;
         return Objects.equals(id, that.id) &&
                 Objects.equals(usuario, that.usuario) &&
                 Objects.equals(filme, that.filme) &&
