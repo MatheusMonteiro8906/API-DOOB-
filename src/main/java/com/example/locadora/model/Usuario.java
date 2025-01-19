@@ -3,48 +3,48 @@ package com.example.locadora.model;
 import java.util.Objects;
 
 public class Usuario {
-    private Long id;
-    private String nome;
-    private boolean possuiEmprestimo;
+    private Long Id;
+    private String Nome;
+    private boolean PossuiEmprestimo;
 
     public Usuario(Long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-        this.possuiEmprestimo = false;
+        this.Id = id;
+        this.Nome = nome;
+        this.PossuiEmprestimo = false;
     }
 
     // Getters
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
     public boolean isPossuiEmprestimo() {
-        return possuiEmprestimo;
+        return PossuiEmprestimo;
     }
 
     // Setters
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.Nome = nome;
     }
 
     public void setPossuiEmprestimo(boolean possuiEmprestimo) {
-        this.possuiEmprestimo = possuiEmprestimo;
+        this.PossuiEmprestimo = possuiEmprestimo;
     }
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", possuiEmprestimo=" + possuiEmprestimo +
+                "id=" + Id +
+                ", nome='" + Nome + '\'' +
+                ", possuiEmprestimo=" + PossuiEmprestimo +
                 '}';
     }
 
@@ -53,13 +53,13 @@ public class Usuario {
         if (this == objeto) return true;
         if (objeto == null || getClass() != objeto.getClass()) return false;
         Usuario usuario = (Usuario) objeto;
-        return possuiEmprestimo == usuario.possuiEmprestimo &&
-                Objects.equals(id, usuario.id) &&
-                Objects.equals(nome, usuario.nome);
+        return PossuiEmprestimo == usuario.PossuiEmprestimo &&
+                Objects.equals(Id, usuario.Id) &&
+                Objects.equals(Nome, usuario.Nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, possuiEmprestimo);
+        return Objects.hash(Id, Nome, PossuiEmprestimo);
     }
 }

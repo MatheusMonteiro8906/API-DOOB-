@@ -4,81 +4,81 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Emprestimo {
-    private Long id;
-    private Usuario usuario;
-    private Filme filme;
-    private LocalDate dataEmprestimo;
-    private LocalDate dataDevolucaoPrevista;
-    private LocalDate dataDevolucaoReal;
+    private Long Id;
+    private Usuario Usuario;
+    private Filme Filme;
+    private LocalDate DataEmprestimo;
+    private LocalDate DataDevolucaoPrevista;
+    private LocalDate DataDevolucaoReal;
 
     public Emprestimo(Long id, Usuario usuario, Filme filme, LocalDate dataEmprestimo, LocalDate dataDevolucaoPrevista) {
-        this.id = id;
-        this.usuario = usuario;
-        this.filme = filme;
-        this.dataEmprestimo = dataEmprestimo;
-        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
-        this.dataDevolucaoReal = null;
+        this.Id = id;
+        this.Usuario = usuario;
+        this.Filme = filme;
+        this.DataEmprestimo = dataEmprestimo;
+        this.DataDevolucaoPrevista = dataDevolucaoPrevista;
+        this.DataDevolucaoReal = null;
     }
 
     // Getters
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public Usuario getUsuario() {
-        return usuario;
+        return Usuario;
     }
 
     public Filme getFilme() {
-        return filme;
+        return Filme;
     }
 
     public LocalDate getDataEmprestimo() {
-        return dataEmprestimo;
+        return DataEmprestimo;
     }
 
     public LocalDate getDataDevolucaoPrevista() {
-        return dataDevolucaoPrevista;
+        return DataDevolucaoPrevista;
     }
 
     public LocalDate getDataDevolucaoReal() {
-        return dataDevolucaoReal;
+        return DataDevolucaoReal;
     }
 
     // Setters
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        this.Usuario = usuario;
     }
 
     public void setFilme(Filme filme) {
-        this.filme = filme;
+        this.Filme = filme;
     }
 
     public void setDataEmprestimo(LocalDate dataEmprestimo) {
-        this.dataEmprestimo = dataEmprestimo;
+        this.DataEmprestimo = dataEmprestimo;
     }
 
     public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
-        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+        this.DataDevolucaoPrevista = dataDevolucaoPrevista;
     }
 
     public void setDataDevolucaoReal(LocalDate dataDevolucaoReal) {
-        this.dataDevolucaoReal = dataDevolucaoReal;
+        this.DataDevolucaoReal = dataDevolucaoReal;
     }
 
     @Override
     public String toString() {
         return "Emprestimo{" +
-                "id=" + id +
-                ", usuario=" + usuario +
-                ", Filme=" + filme +
-                ", dataEmprestimo=" + dataEmprestimo +
-                ", dataDevolucaoPrevista=" + dataDevolucaoPrevista +
-                ", dataDevolucaoReal=" + dataDevolucaoReal +
+                "id=" + Id +
+                ", usuario=" + Usuario +
+                ", Filme=" + Filme +
+                ", dataEmprestimo=" + DataEmprestimo +
+                ", dataDevolucaoPrevista=" + DataDevolucaoPrevista +
+                ", dataDevolucaoReal=" + DataDevolucaoReal +
                 '}';
     }
 
@@ -87,16 +87,16 @@ public class Emprestimo {
         if (this == objeto) return true;
         if (objeto == null || getClass() != objeto.getClass()) return false;
         Emprestimo that = (Emprestimo) objeto;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(usuario, that.usuario) &&
-                Objects.equals(filme, that.filme) &&
-                Objects.equals(dataEmprestimo, that.dataEmprestimo) &&
-                Objects.equals(dataDevolucaoPrevista, that.dataDevolucaoPrevista) &&
-                Objects.equals(dataDevolucaoReal, that.dataDevolucaoReal);
+        return Objects.equals(Id, that.Id) &&
+                Objects.equals(Usuario, that.Usuario) &&
+                Objects.equals(Filme, that.Filme) &&
+                Objects.equals(DataEmprestimo, that.DataEmprestimo) &&
+                Objects.equals(DataDevolucaoPrevista, that.DataDevolucaoPrevista) &&
+                Objects.equals(DataDevolucaoReal, that.DataDevolucaoReal);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, usuario, filme, dataEmprestimo, dataDevolucaoPrevista, dataDevolucaoReal);
+        return Objects.hash(Id, Usuario, Filme, DataEmprestimo, DataDevolucaoPrevista, DataDevolucaoReal);
     }
 }

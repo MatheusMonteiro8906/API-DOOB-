@@ -1,10 +1,10 @@
-package com.example.biblioteca;
+package com.example.locadora;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BibliotecaGerenciamentoApplicationTests {
+class LocadoraGerenciamentoApplicationTests {
 
 	@Test
 	void contextLoads() {
