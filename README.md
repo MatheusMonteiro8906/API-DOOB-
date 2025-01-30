@@ -148,7 +148,7 @@ GET http://localhost:8080/usuarios/1 → Retorna o usuário com ID 1.
 - **Método:** DELETE
 - **URL:** http://localhost:8080/usuarios/{id}
 
-Substitua {id} pelo ID do filme que deseja remover.
+Substitua {id} pelo ID do usuário que deseja remover.
 
 ## Estrutura do Projeto
 
