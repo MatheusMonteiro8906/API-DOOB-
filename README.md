@@ -13,7 +13,7 @@ Este projeto é uma API para gerenciar filmes em uma locadora. A API permite adi
 
 - **JDK 17** ou superior
 - **Maven** instalado
-- Uma IDE como VSCODE
+- Uma IDE
 - Postman (ou similar) para testar as rotas da API
 
 ---
