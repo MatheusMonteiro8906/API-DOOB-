@@ -1,6 +1,7 @@
 package com.example.locadora.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,7 @@ import com.example.locadora.model.Filme;
 import com.example.locadora.service.FilmeService;
 
 @RestController
-@RequestMapping("/filmes")
+@RequestMapping(value = "/filmes")
 public class FilmesController {
 
     @Autowired
@@ -30,6 +31,11 @@ public class FilmesController {
     @GetMapping
     public List<Filme> listarFilmes() {
         return filmeService.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Filme> buscarFilmePorId(@PathVariable Long id) {
+        return filmeService.buscarPorId(id);
     }
 
     @GetMapping("/disponiveis")

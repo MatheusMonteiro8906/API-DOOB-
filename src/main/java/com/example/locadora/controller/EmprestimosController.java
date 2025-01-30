@@ -32,7 +32,7 @@ public class EmprestimosController {
 
     @PostMapping
     public Emprestimo registrarEmprestimo(@RequestParam Long usuarioId, @RequestParam Long filmeId) {
-        Usuario usuario = usuarioService.buscarPorId(usuarioId)
+        Usuario usuario = usuarioService.buscarUsuarioPorId(usuarioId)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         Filme filme = filmeService.buscarPorId(filmeId)
                 .orElseThrow(() -> new RuntimeException("Filme não encontrado"));

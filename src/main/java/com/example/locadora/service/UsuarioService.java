@@ -19,7 +19,16 @@ public class UsuarioService {
         return usuario;
     }
 
-    public Optional<Usuario> buscarPorId(Long id) {
+    public List<Usuario> ListarUsuarios() {
+        return usuarios;
+    }
+
+    public Optional<Usuario> buscarUsuarioPorId(Long id) {
         return usuarios.stream().filter(usuario -> usuario.getId().equals(id)).findFirst();
     }
+
+    public void DeletarUsuarioID(Long id) {
+        usuarios.removeIf(usuario -> usuario.getId().equals(id));
+    }
+
 }

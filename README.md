@@ -108,6 +108,48 @@ Use o **Postman** para realizar os testes da API.
 Substitua {id} pelo ID do filme que deseja remover.
 
 
+#### 3.6 Buscar um Filme pelo ID
+- **Método:** GET
+- **URL:** http://localhost:8080/filmes/{id}
+Substitua {id} pelo ID do filme que deseja buscar.
+**Exemplo:**
+GET http://localhost:8080/filmes/1 → Retorna o filme com ID 1.
+
+
+#### 4 Rotas de usuário
+
+#### 4.1 Criar um Usuário
+
+- **Método:** POST
+- **URL:** http://localhost:8080/usuarios
+- **Headers:**
+ - Content-Type: application/json
+- **Body:**
+
+{
+    "nome": "Antonio Marcatto"
+}
+
+#### 4.2 Listar Todos os Usuários
+
+- **Método:** GET
+- **URL:** http://localhost:8080/usuarios
+
+#### 4.3 Buscar Usuário por ID
+
+- **Método:** GET
+- **URL:** http://localhost:8080/usuarios/{id}
+Substitua {id} pelo ID do usuário que deseja buscar.
+- **Exemplo:**
+GET http://localhost:8080/usuarios/1 → Retorna o usuário com ID 1.
+
+#### 4.4 Remover um usuário
+
+- **Método:** DELETE
+- **URL:** http://localhost:8080/usuarios/{id}
+
+Substitua {id} pelo ID do filme que deseja remover.
+
 ## Estrutura do Projeto
 
 - **Controller:** Contém os endpoints para as operações da API.
