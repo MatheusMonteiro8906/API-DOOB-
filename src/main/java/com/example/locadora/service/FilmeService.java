@@ -14,8 +14,8 @@ public class FilmeService {
     private final List<Filme> filmes = new ArrayList<>();
     private Long contadorId = 1L;
 
-    public Filme adicionarFilme(String nome, double rating, String sinopse) {
-        Filme filme = new Filme(contadorId++, nome, rating, sinopse);
+    public Filme adicionarFilme(String nome, double rating, String sinopse, double preco) {
+        Filme filme = new Filme(contadorId++, nome, rating, sinopse, preco);
         filmes.add(filme);
         return filme;
     }
@@ -37,10 +37,39 @@ public class FilmeService {
         filme.setNome(novosDados.getNome());
         filme.setRating(novosDados.getRating());
         filme.setSinopse(novosDados.getSinopse());
+        filme.setPreco(novosDados.getPreco());
         return filme;
     }
 
     public void removerFilme(Long id) {
         filmes.removeIf(filme -> filme.getId().equals(id));
+    }
+
+    public Filme emprestarFilme(Long id, int idade) {
+        if (idade < 12 || idade > 110) {
+            throw new RuntimeException("Idade não permitida.");
+        }
+
+        Filme filme = buscarPorId(id).orElseThrow(() -> new RuntimeException("Filme não encontrado"));
+        if (!filme.isEmprestado()) {
+            filme.setEmprestado(true);
+            filme.incrementarContadorEmprestimos();
+        }
+        return filme;
+    }
+
+    public Filme devolverFilme(Long id) {
+        Filme filme = buscarPorId(id).orElseThrow(() -> new RuntimeException("Filme não encontrado"));
+        if (filme.isEmprestado()) {
+            filme.setEmprestado(false);
+        }
+        return filme;
+    }
+
+    public List<Filme> listarFilmesMaisAlugados() {
+        return filmes.stream()
+                    .sorted((f1, f2) -> Integer.compare(f2.getContadorEmprestimos(), f1.getContadorEmprestimos()))
+                    .limit(10)
+                    .collect(Collectors.toList());
     }
 }

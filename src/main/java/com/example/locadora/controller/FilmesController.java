@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.locadora.model.Filme;
@@ -25,7 +26,7 @@ public class FilmesController {
 
     @PostMapping
     public Filme adicionarFilme(@RequestBody Filme filme) {
-        return filmeService.adicionarFilme(filme.getNome(), filme.getRating(), filme.getSinopse());
+        return filmeService.adicionarFilme(filme.getNome(), filme.getRating(), filme.getSinopse(), filme.getPreco());
     }
 
     @GetMapping
@@ -51,5 +52,20 @@ public class FilmesController {
     @DeleteMapping("/{id}")
     public void removerFilme(@PathVariable Long id) {
         filmeService.removerFilme(id);
+    }
+
+    @PostMapping("/{id}/emprestar")
+    public Filme emprestarFilme(@PathVariable Long id, @RequestParam int idade) {
+        return filmeService.emprestarFilme(id, idade);
+    }
+
+    @PostMapping("/{id}/devolver")
+    public Filme devolverFilme(@PathVariable Long id) {
+        return filmeService.devolverFilme(id);
+    }
+
+    @GetMapping("/mais-alugados")
+    public List<Filme> listarFilmesMaisAlugados() {
+        return filmeService.listarFilmesMaisAlugados();
     }
 }

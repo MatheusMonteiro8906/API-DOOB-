@@ -25,15 +25,13 @@ Este projeto é uma API para gerenciar filmes em uma locadora. A API permite adi
 Faça o clone do repositório para sua máquina local:
 
 
-https://github.com/tnnoixd/API-DOOB-
+git clone https://github.com/tnnoixd/API-DOOB-
 
 
 Entre no diretório do projeto:
 
 
 cd %USERPROFILE%\Desktop\locadora-gerenciamento
-
-
 
 
 ### 2. Compile e Rode o Projeto
@@ -68,11 +66,13 @@ Use o **Postman** para realizar os testes da API.
   - Content-Type: application/json
 - **Body:**
 
-  {
-      "nome": "Inception",
-      "rating": 8.8,
-      "sinopse": "Um ladrão rouba segredos dos sonhos."
-  }
+
+{
+    "nome": "Inception",
+    "rating": 8.8,
+    "sinopse": "Um ladrão rouba segredos dos sonhos.",
+    "preco": 5.99
+}
 
 
 #### 3.2 Listar Todos os Filmes
@@ -93,11 +93,11 @@ Use o **Postman** para realizar os testes da API.
   - Content-Type: application/json
 - **Body:**
 
-  {
-      "nome": "Interstellar",
-      "rating": 9.0,
-      "sinopse": "Uma viagem para salvar a humanidade."
-  }
+{
+    "nome": "Interstellar",
+    "rating": 9.0,
+    "sinopse": "Uma viagem para salvar a humanidade."
+}
 
 
 #### 3.5 Remover um Filme
@@ -105,30 +105,60 @@ Use o **Postman** para realizar os testes da API.
 - **Método:** DELETE
 - **URL:** http://localhost:8080/filmes/{id}
 
-Substitua {id} pelo ID do filme que deseja remover.
-
-
 #### 3.6 Buscar um Filme pelo ID
+
 - **Método:** GET
 - **URL:** http://localhost:8080/filmes/{id}
-Substitua {id} pelo ID do filme que deseja buscar.
-**Exemplo:**
-GET http://localhost:8080/filmes/1 → Retorna o filme com ID 1.
 
+#### 3.7 Emprestar um Filme
 
-#### 4 Rotas de usuário
+- **Método:** POST
+- **URL:** http://localhost:8080/filmes/{id}/emprestar?idade=18
+- **Headers:**
+  - Content-Type: application/json
+
+#### 3.8 Devolver um Filme
+
+- **Método:** POST
+- **URL:** http://localhost:8080/filmes/{id}/devolver
+
+#### 3.9 Listar os Filmes Mais Alugados
+
+- **Método:** GET
+- **URL:** http://localhost:8080/filmes/mais-alugados
+
+#### 3.10 Listar Todos os Empréstimos
+
+- **Método:** GET
+- **URL:** http://localhost:8080/emprestimos
+
+#### 3.11 Listar Empréstimos de um Usuário
+
+- **Método:** GET
+- **URL:** http://localhost:8080/usuarios/{id}/emprestimos
+
+#### 3.12 Listar Filmes Emprestados
+
+- **Método:** GET
+- **URL:** http://localhost:8080/filmes/emprestados
+
+---
+
+### 4. Rotas de Usuário
 
 #### 4.1 Criar um Usuário
 
 - **Método:** POST
 - **URL:** http://localhost:8080/usuarios
 - **Headers:**
- - Content-Type: application/json
+  - Content-Type: application/json
 - **Body:**
 
 {
-    "nome": "Antonio Marcatto"
+    "nome": "Antonio Marcatto",
+    "idade": 19
 }
+
 
 #### 4.2 Listar Todos os Usuários
 
@@ -139,11 +169,8 @@ GET http://localhost:8080/filmes/1 → Retorna o filme com ID 1.
 
 - **Método:** GET
 - **URL:** http://localhost:8080/usuarios/{id}
-Substitua {id} pelo ID do usuário que deseja buscar.
-- **Exemplo:**
-GET http://localhost:8080/usuarios/1 → Retorna o usuário com ID 1.
 
-#### 4.4 Remover um usuário
+#### 4.4 Remover um Usuário
 
 - **Método:** DELETE
 - **URL:** http://localhost:8080/usuarios/{id}
@@ -155,5 +182,3 @@ Substitua {id} pelo ID do usuário que deseja remover.
 - **Controller:** Contém os endpoints para as operações da API.
 - **Service:** Contém a lógica de negócios.
 - **Model:** Define a estrutura dos dados (classe Filme).
-
-
