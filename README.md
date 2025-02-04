@@ -175,7 +175,7 @@ Use o **Postman** para realizar os testes da API.
 - **Método:** DELETE
 - **URL:** http://localhost:8080/usuarios/{id}
 
-Substitua {id} pelo ID do filme que deseja remover.
+Substitua {id} pelo ID do usuário que deseja remover.
 
 ## Estrutura do Projeto
 
