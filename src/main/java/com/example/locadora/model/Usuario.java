@@ -6,11 +6,13 @@ public class Usuario {
     private Long Id;
     private String Nome;
     private boolean PossuiEmprestimo;
+    private int Idade;
 
-    public Usuario(Long id, String nome) {
+    public Usuario(Long id, String nome, int idade) {
         this.Id = id;
         this.Nome = nome;
         this.PossuiEmprestimo = false;
+        this.Idade = idade;
     }
 
     // Getters
@@ -26,6 +28,10 @@ public class Usuario {
         return PossuiEmprestimo;
     }
 
+    public int getIdade() {
+        return Idade;
+    }
+
     // Setters
     public void setId(Long id) {
         this.Id = id;
@@ -39,12 +45,17 @@ public class Usuario {
         this.PossuiEmprestimo = possuiEmprestimo;
     }
 
+    public void setIdade(int idade) {
+        this.Idade = idade;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
                 "id=" + Id +
                 ", nome='" + Nome + '\'' +
                 ", possuiEmprestimo=" + PossuiEmprestimo +
+                ", idade=" + Idade +
                 '}';
     }
 
@@ -54,12 +65,13 @@ public class Usuario {
         if (objeto == null || getClass() != objeto.getClass()) return false;
         Usuario usuario = (Usuario) objeto;
         return PossuiEmprestimo == usuario.PossuiEmprestimo &&
+                Idade == usuario.Idade &&
                 Objects.equals(Id, usuario.Id) &&
                 Objects.equals(Nome, usuario.Nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, Nome, PossuiEmprestimo);
+        return Objects.hash(Id, Nome, PossuiEmprestimo, Idade);
     }
 }

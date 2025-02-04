@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.locadora.model.Usuario;
 import com.example.locadora.service.UsuarioService;
 
-
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
@@ -24,14 +23,17 @@ public class UsuariosController {
 
     @PostMapping
     public Usuario registrarUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.registrarUsuario(usuario.getNome());
+        if (usuario.getIdade() <= 0) {
+            throw new RuntimeException("Idade do cliente não pode ser menor que 0");
+        }
+        return usuarioService.registrarUsuario(usuario.getNome(), usuario.getIdade());
     }
 
     @GetMapping
-    public List<Usuario>ListarUsuarios() {
-        return usuarioService.ListarUsuarios();
+    public List<Usuario> listarUsuarios() {
+        return usuarioService.listarUsuarios();
     }
-    
+
     @GetMapping("/{id}")
     public Usuario buscarUsuarioPorId(@PathVariable Long id) {
         return usuarioService.buscarUsuarioPorId(id)
@@ -39,8 +41,7 @@ public class UsuariosController {
     }
 
     @DeleteMapping("/{id}")
-    public void DeletarUsuario(@PathVariable Long id) {
-        usuarioService.DeletarUsuarioID(id);
+    public void deletarUsuario(@PathVariable Long id) {
+        usuarioService.deletarUsuarioPorId(id);
     }
-
 }
