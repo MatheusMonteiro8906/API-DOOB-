@@ -127,7 +127,12 @@ Use o **Postman** para realizar os testes da API.
 - **Método:** POST
 - **URL:** http://localhost:8080/filmes/{id}/devolver
 
-#### 3.9 Listar os Filmes Mais Alugados
+  #### 3.9 Listar os Filmes Alugados
+
+- **Método:** GET
+- **URL:** http://localhost:8080/filmes/alugados
+
+#### 3.10 Listar os Filmes Mais Alugados
 
 - **Método:** GET
 - **URL:** http://localhost:8080/filmes/mais-alugados
