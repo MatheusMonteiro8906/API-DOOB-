@@ -119,7 +119,7 @@ Use o **Postman** para realizar os testes da API.
 - **Body:**
 
 {
-    "userId: 1
+    "userId": 1
 }
 
 #### 3.8 Devolver um Filme
