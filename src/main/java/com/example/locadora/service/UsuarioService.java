@@ -23,11 +23,11 @@ public class UsuarioService {
         return usuarios;
     }
 
-    public Optional<Usuario> buscarUsuarioPorId(Long id) {
-        return usuarios.stream().filter(usuario -> usuario.getId().equals(id)).findFirst();
+    public Optional<Usuario> buscarUsuarioPorId(Long userId) {
+        return usuarios.stream().filter(usuario -> usuario.getUserId().equals(userId)).findFirst();
     }
 
-    public void deletarUsuarioPorId(Long id) {
-        usuarios.removeIf(usuario -> usuario.getId().equals(id));
+    public void deletarUsuarioPorId(Long userId) {
+        usuarios.removeIf(usuario -> usuario.getUserId().equals(userId));
     }
 }

@@ -80,7 +80,7 @@ Use o **Postman** para realizar os testes da API.
 - **Método:** GET
 - **URL:** http://localhost:8080/filmes
 
-#### 3.3 Listar Filmes Disponíveis
+#### 3.3 Listar Filmes Disponíveis para aluguel
 
 - **Método:** GET
 - **URL:** http://localhost:8080/filmes/disponiveis
@@ -110,12 +110,17 @@ Use o **Postman** para realizar os testes da API.
 - **Método:** GET
 - **URL:** http://localhost:8080/filmes/{id}
 
-#### 3.7 Emprestar um Filme
+#### 3.7 Alugar um Filme
 
 - **Método:** POST
-- **URL:** http://localhost:8080/filmes/{id}/emprestar?idade=18
+- **URL:** http://localhost:8080/filmes/{id}/alugar
 - **Headers:**
   - Content-Type: application/json
+- **Body:**
+
+{
+    "userId: 1
+}
 
 #### 3.8 Devolver um Filme
 
@@ -126,21 +131,6 @@ Use o **Postman** para realizar os testes da API.
 
 - **Método:** GET
 - **URL:** http://localhost:8080/filmes/mais-alugados
-
-#### 3.10 Listar Todos os Empréstimos
-
-- **Método:** GET
-- **URL:** http://localhost:8080/emprestimos
-
-#### 3.11 Listar Empréstimos de um Usuário
-
-- **Método:** GET
-- **URL:** http://localhost:8080/usuarios/{id}/emprestimos
-
-#### 3.12 Listar Filmes Emprestados
-
-- **Método:** GET
-- **URL:** http://localhost:8080/filmes/emprestados
 
 ---
 
