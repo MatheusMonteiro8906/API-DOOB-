@@ -90,4 +90,10 @@ public class FilmeService {
                     .limit(10)
                     .collect(Collectors.toList());
     }
+
+    public List<Filme> listarAlugados() {
+        return filmes.stream()
+            .filter(Filme::isEmprestado)
+            .collect(Collectors.toList());
+    }
 }
