@@ -81,4 +81,10 @@ public class FilmesController {
     public List<Filme> listarFilmesMaisAlugados() {
         return filmeService.listarFilmesMaisAlugados();
     }
+
+    @GetMapping("/alugados")
+    public List<Filme> listarAlugados() {
+        return filmeService.listarAlugados();
+    }
+
 }
