@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.locadora.model.Filme;
@@ -22,6 +21,18 @@ import com.example.locadora.service.FilmeService;
 @RequestMapping(value = "/filmes")
 @CrossOrigin(origins = "*")
 public class FilmesController {
+
+    public static class AlugarFilmeRequest {
+        private Long userId;
+    
+        public Long getUserId() {
+            return userId;
+        }
+    
+        public void setUserId(Long userId) {
+            this.userId = userId;
+        }
+    }
 
     @Autowired
     private FilmeService filmeService;
@@ -56,9 +67,9 @@ public class FilmesController {
         filmeService.removerFilme(id);
     }
 
-    @PostMapping("/{id}/emprestar")
-    public Filme emprestarFilme(@PathVariable Long id, @RequestParam int idade) {
-        return filmeService.emprestarFilme(id, idade);
+    @PostMapping("/{id}/alugar")
+    public Filme emprestarFilme(@PathVariable Long id, @RequestBody AlugarFilmeRequest request) {
+        return filmeService.emprestarFilme(id, request.getUserId());
     }
 
     @PostMapping("/{id}/devolver")

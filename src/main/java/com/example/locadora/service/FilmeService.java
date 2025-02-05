@@ -8,16 +8,22 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.example.locadora.model.Filme;
+import com.example.locadora.model.Usuario;
 
 @Service
 public class FilmeService {
+    private final UsuarioService usuarioService;
     private final List<Filme> filmes = new ArrayList<>();
     private Long contadorId = 1L;
+
+    public FilmeService(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     public Filme adicionarFilme(String nome, double rating, String sinopse, double preco) {
         Filme filme = new Filme(contadorId++, nome, rating, sinopse, preco);
         filmes.add(filme);
-        return filme;
+            return filme;
     }
 
     public List<Filme> listarTodos() {
@@ -25,11 +31,11 @@ public class FilmeService {
     }
 
     public List<Filme> listarDisponiveis() {
-        return filmes.stream().filter(filme -> !filme.isEmprestado()).collect(Collectors.toList());
+            return filmes.stream().filter(filme -> !filme.isEmprestado()).collect(Collectors.toList());
     }
 
     public Optional<Filme> buscarPorId(Long id) {
-        return filmes.stream().filter(filme -> filme.getId().equals(id)).findFirst();
+            return filmes.stream().filter(filme -> filme.getId().equals(id)).findFirst();
     }
 
     public Filme atualizarFilme(Long id, Filme novosDados) {
@@ -38,36 +44,48 @@ public class FilmeService {
         filme.setRating(novosDados.getRating());
         filme.setSinopse(novosDados.getSinopse());
         filme.setPreco(novosDados.getPreco());
-        return filme;
+            return filme;
     }
 
     public void removerFilme(Long id) {
         filmes.removeIf(filme -> filme.getId().equals(id));
     }
 
-    public Filme emprestarFilme(Long id, int idade) {
-        if (idade < 12 || idade > 110) {
-            throw new RuntimeException("Idade não permitida.");
-        }
-
+    public Filme emprestarFilme(Long id, Long userId) {
         Filme filme = buscarPorId(id).orElseThrow(() -> new RuntimeException("Filme não encontrado"));
-        if (!filme.isEmprestado()) {
-            filme.setEmprestado(true);
-            filme.incrementarContadorEmprestimos();
-        }
-        return filme;
+
+        if (filme.isEmprestado()) {
+            throw new RuntimeException("Filme já emprestado");
     }
+
+    Optional<Usuario> usuarioOpt = usuarioService.buscarUsuarioPorId(userId);
+        if (!usuarioOpt.isPresent()) {
+            throw new RuntimeException("Usuário não encontrado");
+    }
+
+    Usuario usuario = usuarioOpt.get();
+
+        if (usuario.isPossuiEmprestimo()) {
+            throw new RuntimeException("Usuário já possui um empréstimo ativo");
+    }
+
+        filme.setEmprestado(true);
+        filme.incrementarContadorEmprestimos();
+        usuario.setPossuiEmprestimo(true);
+
+            return filme;
+}
 
     public Filme devolverFilme(Long id) {
         Filme filme = buscarPorId(id).orElseThrow(() -> new RuntimeException("Filme não encontrado"));
         if (filme.isEmprestado()) {
             filme.setEmprestado(false);
         }
-        return filme;
+            return filme;
     }
 
     public List<Filme> listarFilmesMaisAlugados() {
-        return filmes.stream()
+            return filmes.stream()
                     .sorted((f1, f2) -> Integer.compare(f2.getContadorEmprestimos(), f1.getContadorEmprestimos()))
                     .limit(10)
                     .collect(Collectors.toList());
